@@ -1,0 +1,26 @@
+//code.ino
+
+
+#include <ESP32Servo.h>
+
+int pirPin = 13;
+int servoPin = 18;
+
+Servo myServo;
+
+void setup() {
+  pinMode(pirPin, INPUT);
+  myServo.attach(servoPin);
+}
+
+void loop() {
+  int motion = digitalRead(pirPin);
+
+  if (motion == HIGH) {
+    myServo.write(90);  // Motion detected
+  } else {
+    myServo.write(0);   // No motion
+  }
+
+  delay(200);
+}
